@@ -1,0 +1,115 @@
+components:
+  schemas:
+    Product:
+      type: object
+      properties: 
+        _id: 
+          type: ObjectId
+          description: ID autogenerado por MongoDB
+        title:
+          type: String
+          description: Nombre del Producto
+        description:
+          type: String
+          description: Descripción del Producto
+        price:
+          type: Number
+          description: Precio del Producto
+      example:
+        _id: ObjectId("asldkj")
+        title: Producto
+        description: Descripcion del producto
+        price: 999.99
+
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos de la base de datos
+      tags:
+        - Products
+      responses: 
+        "200":
+          description: los productos se encontraron correctamente
+    post:
+      summary: Agrega un nuevo producto a la base de datos
+      tags:
+        - Products
+      requestBody: 
+        required: true
+        content: 
+          application/json:
+            schema: 
+              type: object
+              properties: 
+                title:
+                  type: String
+                  description: Nombre del Producto
+                description:
+                  type: String
+                  description: Descripción del Producto
+                price:
+                  type: Number
+                  description: Precio del Producto
+              example:
+                title: Producto 292862
+                description: descripción 
+                price: 2888.99
+      responses:
+        "200": 
+          description: "Producto insertado correctamente"
+  /api/products/{pid}:
+    get:
+      summary: Retorna un producto por su ID de la base de datos
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          schema: 
+            type: String
+          description: ID del Producto
+      responses: 
+        "200":
+          description: El producto se encontro en la base de datos
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Product'
+        "404":
+          description: Producto no encontrado
+    put: 
+      summary: Actualizar un producto en la base de datos
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          schema: 
+            type: String
+          description: ID del Producto
+      requestBody: 
+        required: true
+        content: 
+          application/json:
+            schema: 
+              type: object
+              $ref: '#/components/schemas/Product'
+      responses:
+        "200":
+          description: Producto actualizado!
+        "400":
+          description: Producto no encontrado
+    delete:
+      summary: Borrar un producto en la base de datos
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          schema: 
+            type: String
+          description: ID del Producto
+      responses: 
+        "200":
+          description: El producto se encontro en la base de datos

@@ -1,0 +1,96 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties: 
+        _id: 
+          type: ObjectId
+          description: ID autogenerado por MongoDB
+        first_name:
+          type: String
+          description: Nombre del Usuario
+        last_name:
+          type: String
+          description: Apellido del Usuario
+        mail:
+          type: String
+          description: Email del Usuario
+        password:
+          type: String
+          description: Contraseña del Usuario
+        role:
+          type: String
+          description: El rol del Usuario
+      example:
+        _id: ObjectId("ajshsjsk")
+        first_name: Carlos
+        last_name: Martinez
+        mail: carlosmartinez@correo.com
+        password: 123sws
+        role: user
+
+paths:
+  /api/register:
+    post:
+      summary: Crea un nuevo usuario
+      tags:
+        - Sessions
+      requestBody: 
+        required: true
+        content: 
+          application/json:
+            schema: 
+              type: object
+              properties: 
+                first_name:
+                  type: String
+                  description: Nombre del Usuario
+                last_name:
+                  type: String
+                  description: Apellido del Usuario
+                mail:
+                  type: String
+                  description: Email del Usuario
+                password:
+                  type: String
+                  description: Contraseña del Usuario
+              example:
+                first_name: Laura
+                last_name: Rodriguez
+                mail: laurarodriguez@correo.com
+                password: 123sws
+      responses:
+        "200": 
+          description: "Usuario insertado correctamente"
+        "400":
+          description: "Usuario ya existe en la base de datos"
+        "500":
+          description: "Error interno al insertar en la base de datos"
+  /api/login:
+     post:
+      summary: Se loguea un usuario ya existente en la base de datos
+      tags:
+        - Sessions
+      requestBody: 
+        required: true
+        content: 
+          application/json:
+            schema: 
+              type: object
+              properties: 
+                mail:
+                  type: String
+                  description: Email del Usuario
+                password:
+                  type: String
+                  description: Contraseña del Usuario
+              example:
+                mail: laurarodriguez@correo.com
+                password: 123sws
+      responses:
+        "200": 
+          description: "El usuario se logueo correctamente"
+        "400":
+          description: "El suario no existe en la base de datos"
+        "500":
+          description: "Error interno al loguearse"

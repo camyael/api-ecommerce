@@ -1,0 +1,35 @@
+paths:
+  /api/carts:
+    summary: Carritos
+  /api/carts/{cid}:
+    post: 
+      summary: Agregar productos a un carrito segun su id
+      tags:
+        - Carts
+      parametes:
+        parameters:
+        - in: path
+          name: cid
+          schema: 
+            type: String
+          description: ID del Carrito
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema: 
+              type: object
+              properties: 
+                id:
+                  type: String
+                  description: Nombre del Producto
+                description:
+                  type: String
+                  description: Descripción del Producto
+                price:
+                  type: Number
+                  description: Precio del Producto
+              example:
+                title: Producto 292862
+                description: descripción 
+                price: 2888.99

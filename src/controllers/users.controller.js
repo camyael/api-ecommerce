@@ -27,7 +27,7 @@ const loginPost = async (req, res) => {
 
 const registerPost = async (req, res) => {
     const { first_name, last_name, mail, phoneNumber, password } = req.body;
-    if(!first_name || !last_name || !mail || !phoneNumber || !password) return res.status(400).send({status: error, error: "Valores incompletos"})
+    if(!first_name || !last_name || !mail || !phoneNumber || !password) return res.status(400).send({status: "error", error: "Valores incompletos"})
     const exist = await users.findUser(mail)
     if(exist) return res.status(400).send({status: error, error: "El usuario ya existe"})
     const hashedPassword = await createHash(password) // hashea la contra del usuario

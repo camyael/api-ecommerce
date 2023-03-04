@@ -12,14 +12,15 @@ const getAll = async (req, res) => {
 
 const newProd = async (req, res) => {
     // incorporar productos al listado (disponible para administradores)
-    const { title, description, price } = req.body
+    const { title, description, price, brand } = req.body
     const date = new Date().toLocaleString();
     if(!title||!price||!description) return res.status(400).send({status:"error",error:"Incomplete values"});
     if(!req.file) {
         const result = ProductsDTO.newProductDto({
             title,
             description,
-            price
+            price,
+            brand
         })
         const product = await productos.save(result, date)
         return res.send({status: "success", payload: product})
@@ -29,6 +30,7 @@ const newProd = async (req, res) => {
         title,
         description,
         price,
+        brand,
         image
     })
     const product = await productos.save(result, date)

@@ -4,6 +4,7 @@ export default class ProductsDTO {
             title: product.title,
             description: product.description || '',
             price: product.price,
+            brand: product.brand,
             image: product.image || ''
         }
     }

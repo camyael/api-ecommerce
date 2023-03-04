@@ -113,3 +113,8 @@
 {"level":"error","message":"Error al conectar a testingMongoParseError: Invalid scheme, expected connection string to start with \"mongodb://\" or \"mongodb+srv://\""}
 {"level":"error","message":"Error al conectar a testingMongoParseError: Invalid scheme, expected connection string to start with \"mongodb://\" or \"mongodb+srv://\""}
 {"level":"warning","message":"Método GET en / - No existe la ruta"}
+{"level":"warning","message":"Método GET en /images/products/1674394643343-a24efa740b008536ea54da4164d8a00c.jpg - No existe la ruta"}
+{"level":"warning","message":"Método GET en /images/products/1674345479550-51dc670d9e034202afaecc4c112af6f6.jpg - No existe la ruta"}
+{"level":"warning","message":"Método GET en /images/products/1677813463713-DSC01006-768x512.jpg - No existe la ruta"}
+{"level":"warning","message":"Método GET en /images/old_era. - No existe la ruta"}
+{"level":"warning","message":"Método GET en /images/adidas-continental - No existe la ruta"}

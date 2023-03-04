@@ -7,16 +7,20 @@ const schema = {
         required: true
     },
     description: {
-        type: String
-        // required: true
+        type: String,
+        required: true
     },
     price: {
         type: Number,
         required: true
     },
+    brand: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
-        // required: true
+        required: true
     },
     timestamp: {
         type: String,
@@ -28,7 +32,7 @@ const schema = {
     },
     stock: {
         type: Number,
-        default: 1
+        default: 10
     }
 }
 

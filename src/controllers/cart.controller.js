@@ -48,8 +48,8 @@ const checkoutCarts = async (req, res) => {
     if(!resultIdCart) return res.send({status: "error", payload: "No se pudo crear el carrito"})
     const resultUpdate = await cart.postInCart(resultIdCart, cartItem)
     const mail = mailOptions(
-        "camilavillaverde3@gmail.com",
-        `Nuevo pedido de ${user.fullname}`,
+        user.user.mail,
+        `Nuevo pedido de ${user.user.fullname}`,
         cartItem
     )
     const whatsapp = sendingWhatsapp(user, cartItem)

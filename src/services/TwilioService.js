@@ -11,8 +11,8 @@ export const sendingWhatsapp = async (to, body) => {
 
     const result = await client.messages.create({
         from: 'whatsapp:' + config.twilio.number,
-        to: `whatsapp:+${to.phoneNumber}`,
-        body: `Nuevo pedido de ${to.fullname} ` + listProducts
+        to: `whatsapp:+${to.user.phoneNumber}`,
+        body: `Nuevo pedido de ${to.user.fullname} ` + listProducts
     })
 
     return result;

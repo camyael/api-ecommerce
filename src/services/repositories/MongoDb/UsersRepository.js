@@ -20,4 +20,9 @@ export default class UsersRepositoryMongoDb extends DaoMongoDb {
         const result = await this.collection.updateOne({mail: mail}, {$set: {password: password}})
         return result;
     }
+
+    async deleteAccount ( mail ) {
+        const result = await this.collection.deleteOne({mail: mail})
+        return result
+    }
 }

@@ -25,7 +25,7 @@ const newProd = async (req, res) => {
         const product = await productos.save(result, date)
         return res.send({status: "success", payload: product})
     }
-    const image = req.protocol+"://"+req.hostname+':'+PORT+'/images/products/'+req.file.filename;
+    const image = '/images/products/'+req.file.filename;
     const result = ProductsDTO.newProductDto({
         title,
         description,

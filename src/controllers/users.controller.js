@@ -17,6 +17,7 @@ const loginPost = async (req, res) => {
         return res.cookie("sessionCookie", token,{ httpOnly: true }).send({status:"success", payload: {user: result, token}});;
     }
     const userFind = await users.findUser(mail)
+    if(!userFind) return res.status(400).send({status: "error", error: "No existe una cuenta con ese mail"})
     const isValidPassword = await validatePassword(userFind, password);
     if (!userFind) return res.status(400).send({status: "error", error: "El usuario no existe"});
     if(!isValidPassword) return res.status(400).send({status: "error", error: "La contraseña es incorrecta"});
@@ -32,7 +33,7 @@ const registerPost = async (req, res) => {
     if(exist) return res.status(400).send({status: error, error: "El usuario ya existe"})
     const hashedPassword = await createHash(password) // hashea la contra del usuario
     if(req.file) {
-        const image = config.app.public_url +'/images/users/'+req.file.filename;
+        const image = '/images/users/'+req.file.filename;
         const user = UserDTO.RegisterDTOFrom({
             first_name,
             last_name,
@@ -85,10 +86,22 @@ const restorepassword = async (req, res) => {
     res.send({status: "success", message: "Se actualizó la contraseña"})
 }
 
+// eliminada la cuenta
+const deleteAccount = async (req, res) => {
+    const mail = req.params.mail
+    if(!mail) return res.status(400).send({status: "error", error: "Valores incompletos"});
+    const ifexists = await users.findUser(mail)
+    if(!ifexists) return res.status(400).send({status: "error", error: "No existe el usuario"})
+    const deleteAccount = await users.deleteAccount(mail);
+    if(!deleteAccount) return res.status(400).send({status: "error", error: "No se pudo borrar"})
+    res.send({status: "success", message: "Se ha borrado la cuenta con éxito"})
+}
+
 export default {
     loginPost,
     registerPost,
     logout,
     passportRestore,
-    restorepassword
+    restorepassword,
+    deleteAccount
 }

@@ -16,5 +16,7 @@ router.put('/restorepassword', usersController.restorepassword)
 
 // cerrar sesion
 router.get('/logout', usersController.logout)
+// eliminar cuenta
+router.delete('/deleteaccount/:mail', usersController.deleteAccount)
 
 export default router;

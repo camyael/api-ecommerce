@@ -39,7 +39,7 @@ export const mailPassportRestore = async (to) => {
 
     const result = await transporter.sendMail({
         from: `clothege | recuperaciones de cuenta`,
-        to: "camilavillaverde3@gmail.com", //to.mail,
+        to: to.mail,
         subject: `Recuperación de contraseña para ${to.first_name} ${to.last_name}`,
         html:
             `<div>

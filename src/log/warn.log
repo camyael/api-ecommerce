@@ -135,3 +135,5 @@
 {"level":"warning","message":"Método GET en / - No existe la ruta"}
 {"level":"warning","message":"Método GET en / - No existe la ruta"}
 {"level":"warning","message":"Método GET en / - No existe la ruta"}
+{"level":"warning","message":"Método GET en / - No existe la ruta"}
+{"level":"warning","message":"Método GET en /favicon.ico - No existe la ruta"}

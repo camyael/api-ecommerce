@@ -33,7 +33,6 @@ if(procArgv == 'CLUSTER') {
 } else {
     logger.info(`Proceso PID ${process.pid} ejecutandose`)
     const server = app.listen(PORT, () => console.log("Listening..."))
-
     const io = new Server(server)
 
     const productos = new Products
